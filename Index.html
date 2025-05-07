@@ -139,6 +139,31 @@
       height: 20px;
       fill: currentColor;
     }
+
+    /* Responsividade do botão de alternância */
+    @media (max-width: 768px) {
+      .toggle-theme {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 12px;
+        gap: 4px;
+      }
+
+      .toggle-theme svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .toggle-theme {
+        top: 8px;
+        right: 8px;
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+    }
   </style>
 </head>
 <body class="dark">
@@ -171,7 +196,6 @@
   <section>
     <h2>Experiência Profissional</h2>
     <h3>AeC Contact Center — Técnico de Suporte Pleno</h3>
-    
     <ul>
       <li>Administração e suporte em Data Center corporativo</li>
       <li>Gerenciamento de Active Directory, DNS, DHCP e GPO</li>
