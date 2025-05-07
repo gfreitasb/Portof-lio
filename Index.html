@@ -10,10 +10,15 @@
     :root {
       --bg-color-dark: linear-gradient(135deg, #4b0082, #000000);
       --text-color-dark: #f0f0f0;
-      --bg-color-light: #f5f5f5;
-      --text-color-light: #222;
-      --gray-section: #2d2d2d;
-      --gray-section-light: #e0e0e0;
+      --card-bg-dark: rgba(255, 255, 255, 0.05);
+      --button-bg-dark: #9a66ff;
+      --button-hover-dark: #7a4fd1;
+
+      --bg-color-light: linear-gradient(135deg, #ffffff, #ccccff);
+      --text-color-light: #000000;
+      --card-bg-light: rgba(255, 255, 255, 0.85);
+      --button-bg-light: #6a0dad;
+      --button-hover-light: #4b0082;
     }
 
     body {
@@ -51,24 +56,14 @@
       max-width: 900px;
       margin: 20px auto;
       border-radius: 12px;
+      background-color: var(--card-bg-dark);
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       transition: background-color 0.3s ease;
     }
 
-    section:not(.gray) {
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    body.light section:not(.gray) {
-      background-color: #ffffff;
-    }
-
-    section.gray {
-      background-color: var(--gray-section);
-    }
-
-    body.light section.gray {
-      background-color: var(--gray-section-light);
+    body.light section {
+      background-color: var(--card-bg-light);
+      color: var(--text-color-light);
     }
 
     h1, h2 {
@@ -87,7 +82,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background-color: #9a66ff;
+      background-color: var(--button-bg-dark);
       color: #fff;
       padding: 10px 18px;
       border-radius: 8px;
@@ -101,7 +96,16 @@
     }
 
     .contact-buttons a:hover {
-      background-color: #7a4fd1;
+      background-color: var(--button-hover-dark);
+    }
+
+    body.light .contact-buttons a {
+      background-color: var(--button-bg-light);
+      color: #fff;
+    }
+
+    body.light .contact-buttons a:hover {
+      background-color: var(--button-hover-light);
     }
 
     footer {
@@ -114,28 +118,41 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      background: none;
-      border: 2px solid #9a66ff;
-      color: inherit;
-      border-radius: 8px;
-      padding: 8px 12px;
+      background: var(--button-bg-dark);
+      border: none;
       cursor: pointer;
-      transition: 0.3s;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .toggle-theme:hover {
-      background-color: #9a66ff;
-      color: #fff;
+    body.light .toggle-theme {
+      background: var(--button-bg-light);
+    }
+
+    .toggle-theme svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
   </style>
 </head>
 <body class="dark">
-  <button class="toggle-theme" onclick="toggleTheme()">Alternar Tema</button>
+  <button class="toggle-theme" onclick="toggleTheme()">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1zm6.364 3.636a1 1 0 010 1.414l-1.414 1.414a1 1 0 01-1.414-1.414L16.95 5.05a1 1 0 011.414 0zM21 11a1 1 0 010 2h-2a1 1 0 010-2h2zm-9 9a1 1 0 011-1v-2a1 1 0 10-2 0v2a1 1 0 011 1zm-7.364-3.636a1 1 0 000-1.414L4.222 15.95a1 1 0 00-1.414 1.414l1.414 1.414a1 1 0 001.414 0zM3 11a1 1 0 100 2H1a1 1 0 100-2h2zm3.636-6.364a1 1 0 00-1.414 1.414L6.636 7.464a1 1 0 001.414-1.414L6.05 4.636zM12 6a6 6 0 100 12A6 6 0 0012 6z"/>
+    </svg>
+    ALTERE O TEMA
+  </button>
 
   <header>
-    <img src="minha-foto.jpg" alt="Gabriel de Freitas Brito" class="profile-photo" />
+    <img src="minha foto.jpeg" alt="Gabriel de Freitas Brito" class="profile-photo" />
     <h1>Gabriel de Freitas Brito</h1>
-    <p>Técnico de Suporte Pleno | Especialista em Infraestrutura de TI</p>
+    <p>Especialista em Infraestrutura de TI |  Desenvolvimento de Sistemas | Windows Server | Análise de Dados</p>
     <div class="contact-buttons">
       <a href="mailto:gabriel.f.brito7@gmail.com"><i class="fas fa-envelope"></i>Email</a>
       <a href="tel:+5583987934272"><i class="fas fa-phone-alt"></i>Telefone</a>
@@ -145,13 +162,16 @@
 
   <section>
     <h2>Sobre Mim</h2>
-    <p>Com sólida experiência no ramo de Tecnologia da Informação, iniciei minha trajetória profissional como técnico de suporte e infraestrutura Pleno...</p>
+    <p>Com sólida experiência no ramo de Tecnologia da Informação, iniciei minha trajetória profissional como técnico de suporte e infraestrutura Pleno.</p>
+    <p>Possuo proficiência em gerenciamento de Data Center, administração de servidores, suporte técnico especializado e manutenção de ambientes corporativos de TI.</p>
+    <p>Destaca-se pela atuação em empresas parceiras, adaptando soluções a diferentes contextos organizacionais e gerenciando recursos críticos como Active Directory, DNS/DHCP e GPO.</p>
+    <p>Também possui conhecimentos em SQL e com foco a excelência, inovação e melhoria contínua dos processos de em que gerencio.</p>
   </section>
 
-  <section class="gray">
+  <section>
     <h2>Experiência Profissional</h2>
     <h3>AeC Contact Center — Técnico de Suporte Pleno</h3>
-    <p><em>Período de atuação: (adicione as datas aqui, se desejar)</em></p>
+    
     <ul>
       <li>Administração e suporte em Data Center corporativo</li>
       <li>Gerenciamento de Active Directory, DNS, DHCP e GPO</li>
@@ -163,15 +183,18 @@
 
   <section>
     <h2>Formação</h2>
-    <p>Graduação em Análise e Desenvolvimento de Sistemas - Estácio</p>
+    <p>Tecnólogo em Análise e Desenvolvimento de Sistemas - Estácio</p>
   </section>
 
   <section>
     <h2>Certificações</h2>
     <ul>
-      <li>SQL Completo com Google BigQuery Para Análise de Dados – Udemy – março de 2024</li>
-      <li>Imersão Dev Alura – Alura – novembro de 2023</li>
-      <li>OKR - Objectives and Key Results</li>
+      <li>SQL para Análise de Dados: Do básico ao avançado – Udemy</li>
+      <li>SQL Completo com Google BigQuery Para Análise de Dados – Udemy</li>
+      <li>Imersão Dev Alura – Alura</li>
+      <li>OKR - Objectives and Key Results – FM2S Educação e Consultoria</li>
+      <li>Lean Six Sigma White Belt – FM2S Educação e Consultoria</li>
+      <li>Lean Six Sigma Yellow Belt – FM2S Educação e Consultoria</li>
     </ul>
   </section>
 
@@ -182,13 +205,8 @@
   <script>
     function toggleTheme() {
       const body = document.body;
-      if (body.classList.contains('dark')) {
-        body.classList.remove('dark');
-        body.classList.add('light');
-      } else {
-        body.classList.remove('light');
-        body.classList.add('dark');
-      }
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
     }
   </script>
 </body>
